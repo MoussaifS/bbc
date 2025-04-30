@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "venues",
+  "info": {
+    "singularName": "venue",
+    "pluralName": "venues",
+    "displayName": "Venue",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "venue"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "capacity": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "pricePerHour": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "setupOptions": {
+      "type": "json",
+      "required": true
+    },
+    "amenities": {
+      "type": "json",
+      "required": true
+    },
+    "rules": {
+      "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": false
+    },
+    "cardTitle": {
+      "type": "string"
+    },
+    "cardDescription": {
+      "type": "string"
+    },
+    "cardFeatures": {
+      "type": "string"
+    },
+    "spaceType": {
+      "type": "enumeration",
+      "enum": [
+        "confrence",
+        "meeting room"
+      ]
+    }
+  }
+}

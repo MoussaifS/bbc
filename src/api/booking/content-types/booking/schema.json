@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "Booking",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "bookingDate": {
+      "type": "date"
+    },
+
+   "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "bookings"
+    },
+    "venue": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::venue.venue",
+      "inversedBy": "bookings"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment.payment",
+      "mappedBy": "booking"
+    },
+
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "completed",
+        "canceled "
+      ],
+      "default": "pending"
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "spaceType": {
+      "type": "enumeration",
+      "enum": [
+        "meeting",
+        "confrence"
+      ]
+    },
+    "totalCost": {
+      "type": "string"
+    }
+  }
+}
